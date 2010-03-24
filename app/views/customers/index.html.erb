@@ -1,0 +1,17 @@
+<h1><%= @store.store_name %> Customers</h1>
+<%= btm %>
+<hr />
+<% form_remote_tag :url=>{:action=>:search}, :before=>"$('loader').show()", :complete=>"$('loader').hide();" do %>
+	<%= text_field_tag :customers_name %>	
+	<%= submit_tag 'Search' %>
+	<%= image_tag 'ajax-loader.gif', :id => 'loader', :style => 'display:none;' %> 
+<% end -%>
+<div id="customers-list">
+	<%= render @customers %>
+</div>
+
+<% if @customers.empty? -%>
+	<p>
+		No Customers. Add one <%= link_to "here", new_customer_path %>.
+	</p>
+<% end -%>

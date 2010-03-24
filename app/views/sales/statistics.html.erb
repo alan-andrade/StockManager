@@ -1,0 +1,25 @@
+<% content_for :script do %>
+	 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<% end -%>
+
+<h1>Statistics for Sales</h1>
+<%= btm %> | <%= link_to "Back To sales", sales_path %>
+<hr />
+<script type="text/javascript">
+			google.load('visualization', '1', {'packages':['annotatedtimeline']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Date');
+        data.addColumn('number', 'Sales');       
+        data.addColumn('number', 'Purchases');
+        data.addRows([       
+					<% to_google_graph(@sales, @purchases) %>
+				]);
+        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('timeline'));
+        chart.draw(data);
+      }	
+</script>
+<div id="timeline" style="width: 700px; height: 240px;"></div>
+<br /><br />
+

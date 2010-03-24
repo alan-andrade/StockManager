@@ -1,0 +1,20 @@
+	<p>
+		<%= f.text_field :name  %>
+		<%= f.label :name, "Name (required)" %>
+	</p>			
+	<p>
+		<%= f.text_field :email %>
+		<%= f.label :email %>
+	</p>
+	<p>
+		<%= f.text_field :phone %>
+		<%= f.label :phone %>
+	</p>	
+	<p>
+		<%= f.text_field :address %>
+		<%= f.label :address %>
+	</p>
+	<p>
+		<%= f.label :references, 'Address References' %><br />
+		<%= f.text_area :references, :cols=>40, :rows=>4 %>
+	</p>

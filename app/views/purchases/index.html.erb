@@ -1,0 +1,25 @@
+<h1>Purchases</h1>
+<%= btm %>
+<hr />
+<table>
+	<tr>
+		<th>Date</th><th>Supplier</th><th>Product</th><th>Quantity</th><th>Actions</th>
+	</tr>
+			<% for purchase in @purchases %>
+				<tr class="first">
+					<td id="date"><%= purchase.created_at.to_date.to_s(:short) %></td>
+					<td><%= purchase.supplier.name %></td><td></td><td></td><td><%= link_to "View", purchase_path(purchase) %></td>
+				</tr>
+				<% for pp in purchase.purchase_products %>
+					<tr>
+						<td></td><td></td><td><%= pp.product.product_name %></td><td><%= number_with_delimiter pp.qty %></td>
+					</tr>
+				<% end %> 
+			<% end %>
+</table>
+
+<% if @purchases.empty? -%>
+	<p>
+		No Purchases at the time.
+	</p>
+<% end -%>

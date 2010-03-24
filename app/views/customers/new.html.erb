@@ -1,0 +1,13 @@
+<h1><%= @store.store_name %> New Customer</h1>
+<%= btm %>
+<hr />
+<% field_set_tag 'Customer Information' do %>
+<% form_for @customer do |f| -%>
+	<%= f.error_messages %>
+<%= render :partial => "form", :locals=>{:f => f} %>	
+	<p>
+		<%= f.submit 'Create' %>
+	</p>
+<% end -%>
+<% end -%>
+

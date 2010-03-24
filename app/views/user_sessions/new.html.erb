@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<% form_for @user_session, :url=>user_session_path do |t| %>
+	<%= t.error_messages %>
+	<p>
+		<%= t.text_field :email %>
+		<%= t.label :email %>
+	</p>
+	<p>
+		<%= t.password_field :password %>
+		<%= t.label :password %>
+	</p>
+	<p>
+		<%= t.check_box :remember_me %> <%= t.label :remember_me, "Remember me?" %>
+	</p>
+	<%= t.submit "Get me in!" %>
+<% end %> 

@@ -1,0 +1,16 @@
+<h1>My Suppliers</h1>
+<%= btm %>
+<hr />
+<% unless @suppliers.empty? %>
+	<% for sup in @suppliers %>
+		<p>
+			<%= link_to sup.name, supplier_path(sup) %> 
+		</p>
+	<% end %>
+<% else %>
+	<p>
+		You have no suppliers
+	</p>
+<% end %>
+<hr />
+<%= link_to "New Supplier", new_supplier_path %>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<%= stylesheet_link_tag 'application' %>	
+		<%= javascript_include_tag :defaults %>	
+		<%= yield :script %> 
+		<title><%= @page_title || "Stock Manager" %></title>
+	</head>
+	<body>						
+		<div class="header">		
+			<div id="session-bar">
+				<% if current_user %>
+					<%= image_tag('icons/home-icon.png') %><%= link_to current_user.name || current_user.email, account_path %>					|
+					<%= link_to "Log Out", logout_path %><%= image_tag('icons/user-icon.png') %>
+				<% else %>
+					<%= image_tag('icons/home-icon.png') %><%= link_to "Log In", new_user_session_path %> |
+					<%= link_to "Sign Up!", new_user_path %><%= image_tag('icons/user-icon.png') %>
+				<% end %> 
+			</div>	
+		</div>
+		
+		<div class="wrapper">			
+		
+			<div class="navbar">
+					<%= link_to "About", about_path %>
+					<%= link_to "FAQ", faq_path %>
+					<%= link_to "Contact", contact_path %>
+					<%= link_to "Pricing", pricing_path %>
+					
+			</div>
+			
+			<div class="stats-container">				
+				<%= yield %>			
+			</div>						
+			<div id="cleaner"></div>				
+		</div>
+		
+			<div class="footer">
+				<div class="footer" id="square">
+					<h2>Follow us on Twitter</h2>				
+					<p>Twitter is a social netword for microblogging. Is really cool.</p>	
+				</div>
+				<div class="footer" id="square">
+					<h2>Facebook Page</h2>					
+					<p>Facebook is cool too. But has to do something is he wants to stay with market. Is happening the same as myspace</p>
+				</div>
+				<div id="cleaner"></div>
+				All Right Reserved to RooZteR!
+			</div>
+	</body>
+</html>

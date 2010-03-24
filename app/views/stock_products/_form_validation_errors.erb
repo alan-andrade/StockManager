@@ -1,0 +1,13 @@
+<%= link_to_function "X",:style=>"float:right;" do |page|
+	page['form-errors'].visual_effect 'SlideUp'
+	end %>
+<ul>
+	<%  product.errors.each_full do |msg| %>
+		<%# unless msg =~ /is invalid/ %>
+			<li><%= msg %></li>
+		<%# end %> 
+	<% end %> 
+	<% stock_product.errors.each_full do |msg| %>
+		 <%= "<li>" + msg + "</li>" unless msg =~ /is invalid/%>
+ 	<% end %>	
+</ul>

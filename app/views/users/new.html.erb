@@ -1,0 +1,8 @@
+
+
+<h1>Sign Up !</h1>
+<% form_for @user, :url=>account_path do |t| %>
+	<%= t.error_messages %>
+	<%= render :partial=>'form', :object=>t %>
+	<%= t.submit "Sign Up!" %>
+<% end %> 

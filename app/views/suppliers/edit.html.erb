@@ -1,0 +1,13 @@
+<h1>Edit Supplier Information</h1>
+<%= link_to "Back to Supplier", supplier_path(@supplier) %> | <%= btm %>
+<hr />
+
+<% form_for @supplier do |t| %>
+	<%= render :partial=>'form', :locals=>{:t=>t} %>
+	<p>
+		<%= t.label :store_id %>
+		<%= t.select :store_id, @stores.map{|s| [s.store_name, s.id]}%>
+	</p>
+
+	<%= t.submit "Update" %>
+<% end %>

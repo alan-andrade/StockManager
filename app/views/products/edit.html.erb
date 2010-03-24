@@ -1,0 +1,8 @@
+<h1>Editing <%= "#{@product.store.store_name}" %> Product</h1>
+<% form_for @product do |p| %>
+	<p><%= p.text_field :product_name %> <%= p.label :product_name, 'Name' %></p>
+	<p><%= p.text_field :price %> <%= p.label :price, 'Price' %></p>
+	<%= p.label :description, 'Description' %><br />
+	<%= p.text_area :description, :cols=>'30', :rows=>'5' %><br /><br />
+	<%= p.submit 'Update' -%>  or <%= link_to "Go Back", :back %>
+<% end %> 

@@ -1,0 +1,8 @@
+<h1>New Supplier</h1>
+<%= btm %>
+<hr />
+<% form_for @supplier do |t| %>
+	<%= t.error_messages %>
+		<%= render :partial => 'form', :locals=>{:t=>t} %>
+	<%= t.submit "Create" %>
+<% end %>

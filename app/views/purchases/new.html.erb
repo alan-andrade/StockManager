@@ -1,0 +1,29 @@
+<h1>New Purchase</h1>
+<%= btm %>
+<hr />
+<% form_for @purchase do |t| %>
+	<%= t.error_messages %>
+	<p>
+		<%= t.label :supplier_id, 'Supplier: ' %>	
+		<%= t.select :supplier_id, @store.suppliers.map{|s| [s.name, s.id]} %>		
+	</p>
+	<hr />
+	<h2>Products</h2>
+	<% fields_for "purchase_products", :index=>nil do |p| %>	
+	
+		<%= link_to_function "Add", do |page|
+			page.insert_html 'bottom', 'purchase-products', :partial=>"purchase_products_form", :locals=>{:store => @store, :p => p}
+		end %>
+		
+			<div id="purchase-products">
+				<%= render :partial => "purchase_products_form", :locals=>{:store => @store, :p => p} %>					
+			</div>
+	<% end %> 
+	<p>
+		<%= t.label :comments, "Comments: " %><br />
+		<%= t.text_area :comments, :rows=>4, :cols=>30 %>		
+	</p>
+	
+	<%= t.submit "Purchase" %>
+<% end %>
+

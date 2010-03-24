@@ -1,0 +1,4 @@
+var options = [
+<%- for product in @products -%>
+	[<%= product.name %>, <%= product.id %>]
+<%- end -%> ]

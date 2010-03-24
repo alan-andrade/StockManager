@@ -1,0 +1,27 @@
+	<h1>Add Product</h1>
+	<!-- 
+	<div class="form-helper" id="product_product_name_tag" style="display:none">E.g. iMack 22'</div>
+	<div class="form-helper" id="product_price_tag" style="display:none">How much it cost? E.g. 25.5</div>
+	<div class="form-helper" id="stock_product_qty_tag" style="display:none">Actual quantity in stock. E.g. 10</div>
+	<div class="form-helper" id="product_description_tag" style="display:none">E.g. Blue box with white stripes</div>
+	<div class="form-helper" id="success-notice" style="display:none">Congratulations ! Your product was added successfully</div>
+	/-->
+	<small>Fields with * are required</small>
+	<div id="form-errors" style="display:none"></div>
+	<% remote_form_for sp,
+		:failure=>"alert('Whoops, Something went wrong.')",
+		:before=>"$('loading').show();",
+		:complete=>"$('loading').hide();" do |t| %>
+		<% fields_for :product, product do |p| %>
+			<p>
+				<%= p.label :product_name, "Name: * " %><%= p.text_field :product_name, :size=>"22" %> 			
+			</p>
+				<%= p.label :price, "Price: * " %><%= p.text_field :price, :size=>"6" %>
+				<%= t.label :qty, "Qty: * " %><%= t.text_field :qty , :size=>"6" %>
+			<p>
+				<%= p.label :description, "Description:" %><br /><%= p.text_area :description, :cols=>'25', :rows=>'3' %>
+			</p>
+		<% end %> 
+			<%= t.submit "Create" %> <%= image_tag 'ajax-loader.gif' ,:id=>"loading", :style=>"display:none" %>
+	<% end %>
+

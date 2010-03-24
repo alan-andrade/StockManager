@@ -1,0 +1,10 @@
+<% fields_for :sale_products_attributes, :index=>nil do |s|  %>
+			<p id="product-in-form">
+				<%= s.label :product, 'Product:' %>
+				<%= s.select :product_id, options_from_collection_for_select(@products_names, 'product_id', 'product_name'), {},:onchange=>"selectFieldChanged(this)" %>
+				<%= s.label :qty, 'Quantity:' %>
+				<%= s.text_field :qty,:size=> 5,:value=>"1", :onfocus=>"confirmProductSelected(this)", :onKeyPress=>"return numbersonly(event, false)" %>
+				<%= button_to_function "Validate Existance !","validateProductQty(this)", :id=>"validate-existance" %>
+				<%= link_to_function image_tag("/images/icons/delete-icon.png"), "if(this.up('form').select('#remove-product').length != 1){this.up().remove();}", :style=>"float:right", :id=>"remove-product" %>
+			</p>
+<% end %> 

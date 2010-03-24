@@ -1,0 +1,8 @@
+<p>
+	<%= label_tag :customers_name %> <%= image_tag 'ajax-loader.gif', :id => 'ajax-loader', :style => 'display:none;' %><br />	
+	<%= text_field_tag :customers_name %>	
+	<div id="names" class="auto_complete"></div>	 
+	<script type="text/javascript" charset="utf-8">
+		new Ajax.Autocompleter('customers_name','names', '/customers', {method: 'get', indicator: 'ajax-loader'})
+	</script>
+</p>

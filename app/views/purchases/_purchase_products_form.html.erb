@@ -1,0 +1,7 @@
+<p id="product-in-form">
+			<%= p.label :product %>
+			<%= p.select :product_id, store.stock.stock_products.map{|p| [p.product.product_name, p.product.id]} %>
+			<%= p.label	:qty, "Qty: " %>
+			<%= p.text_field :qty, :size=>8, :value=>1, :onKeyPress=>"return numbersonly(event, false)" %>		
+			<%= link_to_function image_tag("/images/icons/delete-icon.png"), "if(this.up('form').select('#remove-product').length != 1){this.up().remove();}", :style=>"float:right", :id=>"remove-product" %>	
+</p>
