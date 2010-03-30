@@ -1,0 +1,18 @@
+<% div_for customer do  %>
+	<h2><%= link_to customer.name, customer %></h2>
+	<p>
+		<%= mail_to(customer.email) %>
+	</p>
+	<p>
+		Telefono:
+		<%= customer.phone %>
+	</p>
+	<p>
+		Direccion:
+		<%= customer.address %>
+	</p>	
+	<p>
+		Referencias:
+		<%= customer.references %>
+	</p>
+<% end -%>

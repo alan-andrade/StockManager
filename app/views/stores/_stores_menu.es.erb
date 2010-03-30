@@ -1,0 +1,11 @@
+<ul class="tools-ul"> 
+						<% for store in (@current_user ? @current_user.stores : current_user.stores) %>
+							<li <%= store.name == @store.name ? "style = 'text-decoration:underline;'" : ""  rescue nil%>> 							
+								<%= link_to h(store.store_name), store_path(store) unless store.new_record?%> 
+							</li>
+						<% end %> 
+						<%= "You don't have stores." if current_user.stores.empty? %>
+						<hr />
+						<li><%= link_to image_tag('icons/plus-icon.png', :alt=>'New Store'), new_store_path %><%= link_to "Nueva Tienda", new_store_path %>	</li>
+						
+</ul>				

@@ -4,7 +4,7 @@ class SalesController < ApplicationController
 
 	def new
 		@sale = @store.sales.build
-		@products_names = @store.stock_products.find(:all, :select => "product_name, product_id", :joins=>:product, :conditions=>["qty > ?", 0])
+		@products_names = @store.stock_products.find(:all, :select => "product_name, product_id", :joins=>:product, :conditions=>["qty > ? AND active = true", 0])
 		@customer = @sale.build_customer
 	end
 	

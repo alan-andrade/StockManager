@@ -1,0 +1,18 @@
+<h1>Venta de <%= @store.name %></h1>
+<%= link_to "Regresar", :back %> | <%= link_to "Regresar a ventas", sales_path %> | <%= btm %>
+<hr />
+<h2><%= l @sale.created_at, :format=>:long %></h2>
+<table>
+	<tr><th>Cliente</th><th>Producto</th><th>Cantidad</th><th>Total</th></tr>
+	<tr>
+		<td><%= @sale.customer ? link_to(@sale.customer.name, customer_path(@sale.customer)) : "Sin Cliente" rescue nil%></td>
+	</tr>
+	<%- for salep in @sale.sale_products -%>	
+		<tr><td></td><td><%= salep.product.product_name %></td><td><%= salep.qty %></td><td><%= number_to_currency salep.product.price * salep.qty %></td></tr>
+	<%- end -%> 
+	<tr class="last">
+		<td></td><td></td><td>Total:</td><td><%= number_to_currency @sale.sale_products.inject(0){ |sum , sp| sum + (sp.qty * sp.product.price) } %></td>
+	</tr>
+</table>
+
+

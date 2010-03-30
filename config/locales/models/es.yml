@@ -1,0 +1,18 @@
+es:
+ activerecord:
+  models: 
+   product: Producto
+   store: Tienda
+   
+  attributes:
+   product:
+    name: Nombre
+    price: Precio
+   stock_product:
+    qty: Cantidad
+   store:
+    name: Nombre
+   customer:
+    name: Nombre
+   
+

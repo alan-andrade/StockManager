@@ -1,0 +1,17 @@
+<h1>Clientes de <%= @store.store_name %></h1>
+<%= btm %>
+<hr />
+<% form_remote_tag :url=>{:action=>:search}, :before=>"$('loader').show()", :complete=>"$('loader').hide();" do %>
+	<%= text_field_tag :customers_name %>	
+	<%= submit_tag 'Buscar' %>
+	<%= image_tag 'ajax-loader.gif', :id => 'loader', :style => 'display:none;' %> 
+<% end -%>
+<div id="customers-list">
+	<%= render @customers %>
+</div>
+
+<% if @customers.empty? -%>
+	<p>
+		No existen clientes. Agrega uno <%= link_to "aqui", new_customer_path %>.
+	</p>
+<% end -%>

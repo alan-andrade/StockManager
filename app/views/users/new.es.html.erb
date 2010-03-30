@@ -1,0 +1,6 @@
+<h1>Registro</h1>
+<% form_for @user, :url=>account_path do |t| %>
+	<%= t.error_messages %>
+	<%= render :partial=>'form', :object=>t %>
+	<%= t.submit "Registrarme" %>
+<% end %> 

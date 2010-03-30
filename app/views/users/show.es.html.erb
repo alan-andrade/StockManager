@@ -1,0 +1,33 @@
+<h1><%= @user.name || "Unamed"%></h1>
+
+<div id="divider">
+	
+	<div class="square">
+		<h1>Informacion Personal</h1>
+		<p>Nombre: <%= @user.name %></p>
+		<p>Correo: <%= @user.email %></p>
+		<p>Password: ***********</p>
+		<%= link_to "Cambiar mi informacion", edit_account_path %>	
+	</div>
+</div>
+<div id="divider">
+	
+	<% if @user.login_count < 2%>
+		<div class="square">
+			<h1>Primeros Pasos</h1>
+			<ol>
+				<li><%= link_to "Crea", new_store_path %> una tienda.</li>
+			</ol>
+		</div>
+	<% end %> 
+
+	<div class="square">
+		<h1>Informacion de tiendas</h1>
+		<p>Tiendas totales: <%= @total_stores %></p>	
+	</div>
+	<div class="square">
+		<%= link_to "Borrar cuenta", user_path(@user), :method=>:delete, :confirm=>'Estas seguro de querer borrar tu cuenta?'%>
+	</div>
+</div>
+
+

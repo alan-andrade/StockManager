@@ -1,0 +1,17 @@
+<% form_remote_tag :url=>{:controller=>'stock_products', :action=>'search'},
+	:before=>"$('loading').show();",
+	:complete=>"$('loading').hide();" ,:html=>{:style=>"text-align:right"} do %>
+	<%= image_tag 'ajax-loader.gif', :id=>"loading", :style=>"display:none" %>
+	<%= text_field_tag :product_name, nil,:size=>"10" %>
+	<%= submit_tag "Buscar" %> 		
+<% end %> 
+<h1>Productos de <%= @store.store_name %></h1>
+<%= btm %>
+<hr />
+<div id="listing-products">		
+	<%= render @stock_products %>
+</div>
+
+<% if @stock_products.empty? %>
+	<p>No tienes productos</p>
+<% end %> 

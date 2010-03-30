@@ -1,0 +1,7 @@
+<h1>Editar informacion de usuario de <%= @customer.store.store_name %></h1>
+<%= btm %> | <%= link_to "Regresar a Clientes", customers_path %>
+<hr />
+<% form_for @customer do |f| -%>
+	<%= render :partial => 'form', :locals=>{:f=>f} %>
+	<%= f.submit 'Actualizar' %>
+<% end -%>

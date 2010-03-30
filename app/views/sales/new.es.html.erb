@@ -1,0 +1,36 @@
+<h1>Nueva venta para <%= @store.store_name %></h1>
+<%= btm %>
+<hr />
+<% form_for @sale do |t| %>
+	<h2>1.</h2>
+	<% field_set_tag 'Informacion de cliente' do %>
+		<center>
+		<%= link_to_function 'Cliente NUEVO', do |page|
+				page.replace_html "customer-info", :partial=>'new_customer_fields', :locals=>{:t => t}
+			end %> ||
+		<%= link_to_function 'Cliente EXISTENTE', do |page|
+				page.replace_html 'customer-info', :partial=>'old_customer_fields' 
+			end %>
+		</center>
+		<hr />
+			
+		<div id="customer-info">			
+		</div>
+	<% end -%>				
+	<br />
+	<h2>2.</h2>
+	<h2>Productos</h2>
+	
+	<%= link_to_function image_tag("/images/icons/plus-icon.png") + "Agregar", do |page|
+		page.insert_html 'bottom', 'new-sale-products', :partial=>"sale_products_form"	
+		page.call('checkAllQtyValidated')
+	end %> 
+	<%= image_tag 'ajax-loader.gif', :id => "loading", :style=>"display:none" %>
+
+	<div id="new-sale-products">
+		<%= render :partial=>"sale_products_form" -%>
+	</div>
+	<br />
+	<%= t.submit "Realizar Venta!", :disabled=>true  %>
+<% end %> 
+

@@ -1,0 +1,6 @@
+<h1>Nueva Tienda</h1>
+<% form_for @store do |t| %>
+	<%= t.error_messages %>
+	<p><%= t.label :store_name, "Nombre de la tienda: " %><%= t.text_field :store_name %></p>
+	<p><%= t.submit "Crear Tienda" %></p>
+<% end %> 

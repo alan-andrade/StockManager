@@ -1,0 +1,21 @@
+	<h1>Agregar Producto</h1>
+
+	<small>Marcado con * es obligatorio</small>
+	<div id="form-errors" style="display:none"></div>
+	<% remote_form_for sp,
+		:failure=>"alert('Whoops, Something went wrong.')",
+		:before=>"$('loading').show();",
+		:complete=>"$('loading').hide();" do |t| %>
+		<% fields_for :product, product do |p| %>
+			<p>
+				<%= p.label :product_name, "Nombre: * " %><%= p.text_field :product_name, :size=>"22" %> 			
+			</p>
+				<%= p.label :price, "Precio: * " %><%= p.text_field :price, :size=>"6" %>
+				<%= t.label :qty, "Cantidad: * " %><%= t.text_field :qty , :size=>"6" %>
+			<p>
+				<%= p.label :description, "Descripcion:" %><br /><%= p.text_area :description, :cols=>'25', :rows=>'3' %>
+			</p>
+		<% end %> 
+			<%= t.submit "Agregar" %> <%= image_tag 'ajax-loader.gif' ,:id=>"loading", :style=>"display:none" %>
+	<% end %>
+

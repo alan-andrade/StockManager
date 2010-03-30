@@ -1,0 +1,29 @@
+<h1>Nueva Compra</h1>
+<%= btm %> | <%= link_to "Regresar a mis Compras", purchases_path %>
+<hr />
+<% form_for @purchase do |t| %>
+	<%= t.error_messages %>
+	<p>
+		<%= t.label :supplier_id, 'Proveedor: ' %>	
+		<%= t.select :supplier_id, @store.suppliers.map{|s| [s.name, s.id]} %>		
+	</p>
+	<hr />
+	<h2>Productos</h2>
+	<% fields_for "purchase_products", :index=>nil do |p| %>	
+	
+		<%= link_to_function "Agregar", do |page|
+			page.insert_html 'bottom', 'purchase-products', :partial=>"purchase_products_form", :locals=>{:store => @store, :p => p}
+		end %>
+		
+			<div id="purchase-products">
+				<%= render :partial => "purchase_products_form", :locals=>{:store => @store, :p => p} %>					
+			</div>
+	<% end %> 
+	<p>
+		<%= t.label :comments, "Comentario de compra: " %><br />
+		<%= t.text_area :comments, :rows=>4, :cols=>30 %>		
+	</p>
+	
+	<%= t.submit "Hacer compra" %>
+<% end %>
+

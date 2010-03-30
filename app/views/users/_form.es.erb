@@ -1,0 +1,14 @@
+<p>
+	<%= form.text_field :name %>	<%= form.label :name, "Nombre Completo" %>	
+</p>
+<p>
+	<%= form.text_field :email %>	<%= form.label :email, "Correo" %><br />	
+</p>
+<p>
+	<%= form.password_field :password %>	<%= form.label :password, form.object.new_record? ? "Password" : "Cambiar password" %><br />
+</p>
+<p>
+	<%= form.password_field :password_confirmation %>	<%= form.label :password_confirmation, "Confirmacion de Password" %><br />	
+</p>
+
+

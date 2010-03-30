@@ -1,0 +1,100 @@
+<h1><%=h @store.store_name %></h1>
+<div id="divider">
+	<div class="square">
+		<%= render :partial => 'new_product_form', :locals=>{:sp => @stock_product, :product=> @product} %>
+	</div>
+	<div class="square">
+		<h1>Proveedores</h1>
+		<i>Informacion sobre tus proveedores</i>
+		<ol>
+			<% for sup in @store.suppliers %>
+				<li><%= link_to sup.name, sup %></li>
+			<% end %>
+		</ol>
+		<% if @store.suppliers.empty? %>
+			<p>
+				You have no suppliers!
+			</p>
+		<% end %>			
+		<hr />
+		<%= link_to "Nuevo Proveedor", new_supplier_path %>		
+	</div>
+	<div class="square">
+		<h1>Clientes</h1>
+		<i>Informacion a cerca de tus clientes</i><br />
+		<%= image_tag 'icons/wallet-icon.png' , :id=>'floated-image-in-square'%> 
+		<p>
+			<%= link_to "Nuevo Cliente", new_customer_path %>
+		</p>	
+		<p>
+			<%= link_to "Todos mis clientes", customers_path %>			
+		</p>
+		<hr />
+		<p>
+			Clientes Totales: <%= @customersqty %>
+		</p>
+	</div>
+</div>
+
+<div id="divider">
+	<div class="square">
+		<h1>Stock</h1>		
+		<i>Maneja tu Stock</i><br />
+		<%= image_tag 'icons/safe-icon.png', :id => 'floated-image-in-square' %> 
+		<p>
+			<%= link_to "Stock Completo" , myproducts_path , :title=>"Mira los productos"%>	
+		</p>
+		<br />
+		<hr />
+		<div id="low-stock-products">	
+			<p>Productos con existencia baja: <%= @low_stock_products %></p>
+		</div>
+		<div id="products-counter" style="display:inline">
+			Productos Totales: <p id="products-counter-number" style="display:inline"><%= @store_products_qty %></p>
+		</div>
+	</div>
+	
+	<div class="square">
+		<h1>Ventas</h1>
+		<i>Informacion de sus ventas</i>
+		<p>
+			<%= image_tag('icons/money-icon.png') %> <%= link_to "Hacer nueva venta", new_sale_path %>
+		</p>
+		<p>
+			<%= image_tag ('icons/coins-icon.png') %> <%= link_to "Ver todas mis ventas", sales_path %>
+		</p>
+		<p>
+			<%= image_tag 'icons/statistics-icon.png' %> <%= link_to "Estadisticas", statistics_sale_path %>
+		</p>
+		<hr />
+		<%= image_tag 'icons/calendar-icon.png', :id=>"floated-image-in-square" %> 
+		<p>Ultima Venta: <%= if @last_sale 
+												link_to (l @last_sale.created_at, :format=>:short), sale_path(@last_sale)  
+											else
+											'No sales' 
+											end%></p>
+		<p>Ventas en este mes: <%= @last_month_sales %></p>
+	</div>	
+	<div class="square">
+		<h1>Pedidos</h1>
+		<i>
+			Informacion de pedidos
+		</i><br />
+		<%= image_tag 'icons/buy-icon.png', :id=>'floated-image-in-square' %> 
+		<p>
+			<%= link_to "Realizar nuevo pedido.", new_purchase_path %>
+		</p>
+		<p>
+			<%= link_to "Todos mis pedidos", purchases_path %>
+		</p>
+		<hr />
+		<p>
+			Pedidos en este mes: <%= @purchases_this_month %>
+		</p>
+	</div>  
+</div>
+<div id="cleaner">
+<hr />
+<%= link_to "Borrar Tienda" + image_tag('icons/delete-icon.png') , store_path(@store.id), :style=>"", :method=>:delete, :confirm=>"Estas a punto de borrar esta tienda. No se puede recuperar informacion depues de realizar esta accion. Esta seguro que quiere borrar la tienda" %>	
+</div>
+

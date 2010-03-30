@@ -1,0 +1,19 @@
+<h1>Proveedor: <%= @sup.name %></h1>
+<%= btm %>
+<hr />
+<p>
+	Nombre: <%= @sup.name %>
+</p>
+<p>
+	Telefono: <%= number_to_phone @sup.phone %>
+</p>	
+<p>
+	Direccion: <%= @sup.address %>
+</p>
+<p>
+	Tienda que suple: <%= @sup.store.store_name %>
+</p>
+<hr />
+<p>
+	<%= link_to "Editar", edit_supplier_path(@sup) %>
+</p>

@@ -69,7 +69,7 @@
 		<hr />
 		<%= image_tag 'icons/calendar-icon.png', :id=>"floated-image-in-square" %> 
 		<p>Last Sale: <%= if @last_sale 
-												link_to @last_sale.created_at.to_s(:short), sale_path(@last_sale)  
+												link_to (l @last_sale.created_at, :format=>:short), sale_path(@last_sale)  
 											else
 											'No sales' 
 											end%></p>

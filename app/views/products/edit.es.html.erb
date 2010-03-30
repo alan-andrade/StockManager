@@ -1,0 +1,8 @@
+<h1>Editando un producto de <%= "#{@product.store.store_name}" %></h1>
+<% form_for @product do |p| %>
+	<p><%= p.text_field :product_name %> <%= p.label :product_name, 'Nombre' %></p>
+	<p><%= p.text_field :price %> <%= p.label :price, 'Precio' %></p>
+	<%= p.label :description, 'Descripcion' %><br />
+	<%= p.text_area :description, :cols=>'30', :rows=>'5' %><br /><br />
+	<%= p.submit 'Actualizar' -%>  o <%= link_to "Regresar", :back %>
+<% end %> 

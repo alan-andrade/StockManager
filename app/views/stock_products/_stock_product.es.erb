@@ -1,0 +1,12 @@
+<% div_for stock_product.product do %>
+<h2><%= link_to stock_product.product.product_name, product_path(stock_product.product)%></h2>
+<p>Precio: <%= stock_product.product.price %></p>
+<p>Cantidad: <%= stock_product.qty %> <%= "<i><b style=\"color:red\">Low Stock!</b></i>" if stock_product.qty < 5 %></p>
+<p>Descripcion: <%= truncate stock_product.product.description, :length=>25 %></p>
+<div id="product-actions">
+			<%= link_to 'Editar', edit_product_path(stock_product.product) %> | <%= link_to_remote 'Borrar', :url=>product_path(stock_product.product), :method=>'delete', :confirm=>'This action will delete the product permanently. Are you sure you want to delete this product?' %> 
+			<% if stock_product.qty < 5 -%>
+				| <%= link_to "Hacer pedido! ", new_purchase_path %>
+			<% end -%>			
+</div>		
+<% end %> 

@@ -1,0 +1,28 @@
+<h1><%= @store.store_name %>	Sales</h1>
+<%= btm %> | <%= link_to "Hacer nueva venta", new_sale_path %>
+<hr />
+<%= will_paginate @sales %>
+<center>
+		<table>
+			<tr><th>Fecha</th><th>Cliente</th><th>Producto</th><th>Cantidad</th><th>Total</th><th>Acciones</th></tr>
+			<% for sale in @sales.sort{|a, b| b.created_at <=> a.created_at} %>
+					<tr class="first"><td id="date"><%= sale.created_at.to_date.to_s(:short) %></td><td></td><td></td><td></td><td></td>
+						<td><%= link_to "Cancelar", sale_path(sale), :method=>:delete, :confirm=>"Are you sure you want to cancel this sale?" %> |	<%=link_to "Ver a detalle", sale_path(sale) %></td>
+					</tr>
+					<tr>
+						<td></td><td><%= sale.customer ? sale.customer.name : "No Customer"%></td>
+					</tr>
+					<% for salep in sale.sale_products %>
+						<tr>
+							<td></td><td></td><td><%= salep.product.product_name  %><%= " <small>(Not longer in stock)</small>" unless salep.product.active? %></td><td><%= salep.qty %></td><td><%= number_to_currency salep.product.price * salep.qty %></td>
+						</tr>
+					<% end %> 
+					<tr class="last">
+						<td>Total:</td><td><td></td></td><td></td><td style="font-weight: bold;"><%= number_to_currency sale.sale_products.inject(0){ |sum , sp| sum + (sp.qty * sp.product.price) } %></td><td></td>
+					</tr>
+			<% end %> 
+		</table>		
+</center>
+
+
+

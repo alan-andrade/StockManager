@@ -1,0 +1,10 @@
+<h1><%= @product.product_name %></h1>
+<%= btm %> | <%= link_to "Regresar al mi stock", myproducts_path %>
+<hr />
+<p>Precio: <%= @product.price %></p>
+<p>Cantidad: <%= @product.stock_product.qty %></p>
+<p>Descripcion: <%= @product.description %></p>
+<hr />
+<p>
+	<%= link_to "Editar", edit_product_path(@product) %> | <%= link_to "Borrar", @product, :method=>:delete, :confirm=>"Estas seguro de borrar este producto?" %>
+</p>

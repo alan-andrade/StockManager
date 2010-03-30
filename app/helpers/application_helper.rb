@@ -11,8 +11,9 @@ module ApplicationHelper
 		content_tag(:div, attrs, &block)
 	end	
 	
-	def btm
-		link_to "Back to Main", store_path(find_store)
+	def btm 
+		str = t(:btm) # We translate
+		link_to str, store_path(find_store)
 	end
 	
   def daysIn(monthNum)

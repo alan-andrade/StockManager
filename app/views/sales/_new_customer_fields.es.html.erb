@@ -1,0 +1,23 @@
+<% t.fields_for :customer do |c| %>	
+			<p>
+				<%= c.text_field :name  %>
+				<%= c.label :name, "Nombre (obligatorio)" %>
+			</p>		
+			<p>
+				<%= c.text_field :email %>
+				<%= c.label :email %>
+			</p>	
+			<p>
+				<%= c.text_field :phone %>
+				<%= c.label :phone, 'Telefono'  %>
+			</p>
+			<p>
+				<%= c.text_field :address %>
+				<%= c.label :address, 'Direccion' %>
+			</p>
+			<p>
+				<%= c.label :references, 'Referencias de domicilio:' %><br />
+				<%= c.text_area :references, :cols=>40, :rows=>4 %>
+			</p>
+<% end -%>
+

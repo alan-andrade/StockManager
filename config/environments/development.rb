@@ -27,3 +27,8 @@ config.action_mailer.smtp_settings =
 		:user_name => "gallito7@gmail.com",
 		:password => "alanandrade2207"
 	}
+	
+APP_CONFIG = {
+  :spanish  =>  "http://es.logos.local:3000",
+  :english  =>  "http://en.logos.local:3000"
+}

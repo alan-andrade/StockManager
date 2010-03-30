@@ -22,7 +22,7 @@
 	<%= @customer.references %>
 </p>
 <p>
-	Purchases: <%= @customer.sales.count %>
+	Purchases: <%= @purchases %>
 </p>
 <hr />
 <%= link_to "Edit Information", edit_customer_path(@customer) %>

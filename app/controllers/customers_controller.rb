@@ -46,6 +46,7 @@ before_filter :find_store, :require_user
 	def show
 		store = Store.find(@store_id)
 		@customer = store.customers.find(params[:id], :include=>[:sales])		
+		@purchases = @customer.sales.count
 	end
 	
 	def search

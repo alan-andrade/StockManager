@@ -9,6 +9,17 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user, :current_user_session, :find_store
   
+  before_filter :set_locale
+  
+  def set_locale
+  	I18n.locale = extract_local_from_uri
+  end
+  
+  def extract_local_from_uri
+  	parsed_locale = request.subdomains.first  	
+  	(LOCALES.include? parsed_locale) ? parsed_locale : nil
+  end
+  
   private
   	def current_user_session
   		return @current_user_session if defined?(@current_user_session)

@@ -1,0 +1,28 @@
+<h1>Cliente: <%= @customer.name %></h1>
+<%= btm %> | <%= link_to "Regresar a clientes", customers_path %>
+<hr />
+<p>
+	Nombre:
+	<%= @customer.name %>
+</p>
+<p>
+	Email:
+	<%= mail_to @customer.email %>
+</p>
+<p>
+	Telefono:
+	<%= @customer.phone %>
+</p>
+<p>
+	Direccion:
+	<%= @customer.address %>
+</p>
+<p>
+	Referencias:
+	<%= @customer.references %>
+</p>
+<p>
+	Compras: <%= @purchases %>
+</p>
+<hr />
+<%= link_to "Editar Informacion", edit_customer_path(@customer) %>

@@ -22,25 +22,27 @@
 					<% end %> 
 				<% end %> 
 			<% end %>
-		<div class="header">		
+		<div class="header">
 			<div id="session-bar">
 				<% if current_user %>
 					<%= image_tag('icons/home-icon.png') %><%= link_to current_user.name || current_user.email, account_path %>					|
-					<%= link_to "Log Out", logout_path %><%= image_tag('icons/user-icon.png') %>
+					<%= link_to "Cerrar Sesion", logout_path %><%= image_tag('icons/user-icon.png') %>
 				<% else %>
-					<%= image_tag('icons/home-icon.png') %><%= link_to "Log In", new_user_session_path %> |
-					<%= link_to "Sign Up!", new_user_path %><%= image_tag('icons/user-icon.png') %>
+					<%= image_tag('icons/home-icon.png') %><%= link_to "Iniciar sesion", new_user_session_path %> |
+					<%= link_to "Registarme!", new_user_path %><%= image_tag('icons/user-icon.png') %>
 				<% end %> 
 			</div>	
+			<%= link_to image_tag('icons/us.ico'), "#{APP_CONFIG[:english]}" %> |
+			<%= link_to image_tag('icons/mexico.ico'), "#{APP_CONFIG[:spanish]}"  %>
 		</div>
 		
 		<div class="wrapper">			
 		
 			<div class="navbar">
-					<%= link_to "About", about_path %>
-					<%= link_to "FAQ", faq_path %>
-					<%= link_to "Contact", contact_path %>
-					<%= link_to "Pricing", pricing_path %>
+					<%= link_to "Acerca de", about_path %>
+					<%= link_to "Preguntas Frequentes", faq_path %>
+					<%= link_to "Contacto", contact_path %>
+					<%= link_to "Costos", pricing_path %>
 			</div>
 			
 			<div class="container">				
@@ -48,14 +50,17 @@
 			</div>
 			<div class="tools">
 				<% if current_user %>
-					<h1>Tools</h1>
-					<h2><%= image_tag 'icons/retail-shop-icon.png' %> Stores</h2>
+					<h1>Herramientas</h1>
+					<h2><%= image_tag 'icons/retail-shop-icon.png' %> Mis Tiendas</h2>
 					<div id="stores-menu">
 							<%= render :partial => 'stores/stores_menu' %>						
 					</div>
 				<% else %>
-					<h1><%= link_to "Sign up now", new_user_path %></h1>
-					<p>With Stock Manager be sure of what you have in inventory.</p>
+					<h1><%= link_to "Registrate AHORA", new_user_path %></h1>
+					<p>Con Stock Manager puedes gestionar el inventario de varias tiendas al mismo tiempo.</p>
+					<p>
+					  No vuelvas a decirle a tu cliente que no tienes el producto, StockManager te avisara con anticipacion que producto debes adquirir.
+					</p>
 				<% end %>
 			</div>
 			<div class="ads">
@@ -71,15 +76,18 @@
 		
 			<div class="footer">
 				<div class="footer" id="square">
-					<h2>Follow us on Twitter</h2>				
-					<p>Twitter is a social netword for microblogging. Is really cool.</p>	
+					<h2>Siguenos en twitter</h2>									 
+					<%= link_to (image_tag 'twitter.jpg', :style=>"width:45px;height:45px;float:left;"), "http://www.twitter.com/stock_manager" %>
+					<p>
+					  @stock_manager
+					</p>
 				</div>
 				<div class="footer" id="square">
-					<h2>Facebook Page</h2>					
-					<p>Facebook is cool too. But has to do something is he wants to stay with market. Is happening the same as myspace</p>
+					<h2>Facebook</h2>					
+					 <%= image_tag 'facebook.jpg', :style=>"width:45px;height:45px" %>
 				</div>
 				<div id="cleaner"></div>
-				All Right Reserved to RooZteR!
+				Todos los derechos reservados a RoOzTer Co. 
 			</div>
 	</body>
 </html>
